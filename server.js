@@ -1,11 +1,15 @@
 //adicionando express no projeto
 const express = require('express')
 const bodyParser = require('body-parser')
+//requisitando cors para habilitar que outras aplicações acessem a api
+const cors = require('cors')
+
 //requisitando o arquivos das rotas dos usuarios
 const userRoute = require('./routes/userRoutes')
 
 const app = express()
 //definir a porta que sera rodado a aplicação
+app.use(cors()) //deixe o parametro vazio para liberar o acesso para qualquer dominio
 
 const port = 3000
 
@@ -30,3 +34,4 @@ app.listen(port, function(){
 // - npm install express --save ---> --save para adicionar a dependencia ele no packjson
 // - npm instal -D nodemon --> -D é a mesma coisa que --save-dev, instala localmente
 // crie um atalho no script e rode o nodemon como 'npm run dev'
+// - npm install cors --> comando para instalar o cors
