@@ -1,46 +1,58 @@
 const fs = require('fs')
 const { join } = require('path')
-const { get } = require('https')
 
-//arquivo json para simular banco de dados
-const filePath = join(__dirname, 'db.json')
+const filePath = join(__dirname, 'users.json');
 
-//função para pegar os dados
-const getUsers = function(){
-    //verificar se o arquivo existe
-    const data = fs.existsSync() 
+const getUsers = () => {
+    const data = fs.existsSync(filePath)
         ? fs.readFileSync(filePath)
-    //se não existe retorna um vazio
         : []
 
-    //tratar
     try {
-        return JSON.parse(data)
-    } catch (error) {
-        return []
+        return JSON.parse(data);
+    } catch (e) {
+        return [];      
     }
-}
+};
 
-//salvando
-const saveUser = function(user){
-    return fs.writeFileSync(filePath, JSON.stringify(user, null, '\t'))
-}
+const saveUser = (users) => fs.writeFileSync(filePath, JSON.stringify(users, null, '\t'));
 
-const userRoute = function(app){
-    return app.route('/user/:id?')
-        .get((req,res) => {
-            const user = getUsers()
+const userRouter = (app) => {
 
-            res.send({ user })
+    app.route('/users/:id?')
+        .get((req, res) => {
+            const users = getUsers()
+            res.send({ users })
         })
         .post((req, res) => {
-            const user = getUsers()
+            const users = getUsers()
 
-            user.push(req.body)
-            saveUser(user)
+            users.push(req.body)
+            saveUser(users)
 
-            res.status(201).send('ok')
+            res.status(201).send('OK')
+        })
+        .put((req, res) => {
+            const users = getUsers()
+            saveUser(users.map(user => {
+                if (user.id === req.params.id) {
+                    return {
+                        ...user,
+                        ...req.body
+                    }
+                }
+
+                return user
+            }))
+
+            res.status(200).send('OK')
+        })
+        .delete((req, res) => {
+            const users = getUsers()
+            saveUser(users.filter(user => user.id !== req.params.id))
+
+            res.status(200).send('OK')
         })
 }
 
-module.exports = userRoute
+module.exports = userRouter
