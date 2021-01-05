@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: f9f9f9;
+}
+
+header nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #831216;
+    padding: 15px 0;
+    color: #f0fbfb;
+    font-family: 'roboto', sans-serif;
+    font-size: 28px;
+}
