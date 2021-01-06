@@ -6,6 +6,7 @@
 
 body {
     background-color: f9f9f9;
+    font-family: 'roboto', sans-serif;
 }
 
 header nav {
@@ -15,6 +16,42 @@ header nav {
     background-color: #831216;
     padding: 15px 0;
     color: #f0fbfb;
-    font-family: 'roboto', sans-serif;
     font-size: 28px;
+}
+
+main section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+main section div {
+    margin-top: 50px;
+    background-color: #f0f0f0;
+    padding: 25px;
+    width: 225px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+main section div p {
+    margin: 5px 0;
+}
+
+@media(max-width:1023px){
+    main section {
+        flex-direction: column;
+    }
+
+    main section div {
+        width: 50%;
+    }
+}
+
+@media(max-width:426px){
+    main section div {
+        width: 75%;
+    }
 }
