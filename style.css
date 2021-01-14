@@ -20,6 +20,11 @@ header nav {
     font-size: 28px;
 }
 
+header nav div {
+    display: flex;
+    align-items: baseline;
+}
+
 header nav div a{
     text-decoration: none;
     color: #fff;
@@ -42,10 +47,12 @@ header nav div button {
     background-color: #f9f9f9;
     border: none;
     border-radius: 8px;
+    font-family: 'roboto', sans-serif;
 }
 
 header nav div button:hover {
     cursor: pointer;
+    color: #831216;
 }
 
 main section {
@@ -63,6 +70,14 @@ main section div {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    font-weight: bold;
+}
+
+main section div img {
+    width: 175px;
+    border-radius: 8px;
 }
 
 main section div p {

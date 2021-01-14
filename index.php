@@ -1,3 +1,6 @@
+<?php
+require_once './Class/SelectAll.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -16,8 +19,10 @@
             <nav>
                 <h1>PIZZARIA</h1>
                 <div>
-                    <input type="text" placeholder="Pesquisar um sabor">
-                    <button>Pesquisar</button>
+                    <form action="validation.php" method="POST">
+                        <input type="text" name="search" placeholder="Pesquisse por um sabor">
+                        <button name="action">Pesquisar</button>
+                    </form>
                     <a href="">Lista de pedidos</a>
                 </div>
             </nav>
@@ -25,55 +30,17 @@
 
         <main>
             <section>
-                <div>
-                    <img src="" alt="pizza">
-                    <p>Calabresa</p>
-                    <span>10</span>
-                </div>
-
-                <div>
-                    <img src="" alt="pizza">
-                    <p>Frango com catupiry</p>
-                    <span>10</span>
-                </div>
-
-                <div>
-                    <img src="" alt="pizza">
-                    <p>4 Queijos</p>
-                    <span>10</span>
-                </div>
-
-                <div>
-                    <img src="" alt="pizza">
-                    <p>Muçarela</p>
-                    <span>10</span>
-                </div>
+                <?php
+                $select = new SelectAll;
+                $select->selectAllValue10();
+                ?>
             </section>
 
             <section>
-                <div>
-                    <img src="" alt="pizza">
-                    <p>Brócolis</p>
-                    <span>20</span>
-                </div>
-
-                <div>
-                    <img src="" alt="pizza">
-                    <p>Portuguesa</p>
-                    <span>20</span>
-                </div>
-
-                <div>
-                    <img src="" alt="pizza">
-                    <p>Lombo</p>
-                    <span>20</span>
-                </div>
-                
-                <div>
-                    <img src="" alt="pizza">
-                    <p>Vegetariana</p>
-                    <span>20</span>
-                </div>
+                <?php
+                $select = new SelectAll;
+                $select->selectAllValue20();
+                ?>
             </section>
         </main>
     </div>
