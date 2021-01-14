@@ -15,6 +15,11 @@
         <header>
             <nav>
                 <h1>PIZZARIA</h1>
+                <div>
+                    <input type="text" placeholder="Pesquisar um sabor">
+                    <button>Pesquisar</button>
+                    <a href="">Lista de pedidos</a>
+                </div>
             </nav>
         </header>
 
